@@ -1,0 +1,33 @@
+<div class="input-group mb-3">
+    <input [(ngModel)]="autoMarca" type="text" class="form-control" placeholder="Buscar" aria-label="Recipient's username" aria-describedby="button-addon2" (keyup)="filtrar()"> 
+</div>
+<div class="table-responsive-sm table-responsive-md table-responsive-lg">
+    <table class="table mb-5 table-striped table-bordered">
+        <thead class="tabla-encabezado">
+            <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Color</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody *ngIf="listAutos.length">
+            <tr *ngFor="let auto of listAutos">
+                <th scope="row">{{ auto.marca }}</th>
+                <th scope="row">{{ auto.modelo }}</th>
+                <th scope="row">{{ auto.color }}</th>
+                <th scope="row">{{ auto.precio }}</th>
+                <td>
+                     <button type="button" class="btn btn-danger m-2" (click)="eliminar(auto)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="!listAutos.length">
+            <tr>
+                <td colspan="5">No hay registros para mostrar</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
